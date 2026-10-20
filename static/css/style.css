@@ -1,0 +1,111 @@
+/* Smooth GPU Acceleration & Custom Scrollbar */
+* {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+::-webkit-scrollbar {
+    width: 6px;
+}
+::-webkit-scrollbar-track {
+    background: #070709;
+}
+.light ::-webkit-scrollbar-track {
+    background: #F9F7F2;
+}
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #EEC558, #B88E22);
+    border-radius: 99px;
+}
+
+/* Gold Gradient Text */
+.gold-shimmer-text {
+    background: linear-gradient(135deg, #FFF6D5 0%, #F3CE72 25%, #C29B38 50%, #FFDF89 75%, #A88120 100%);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: goldShine 6s linear infinite;
+}
+
+.gold-shimmer-bg {
+    background: linear-gradient(135deg, #F3CE72 0%, #D4AF37 50%, #A88120 100%);
+}
+
+@keyframes goldShine {
+    0% { background-position: 0% center; }
+    100% { background-position: 200% center; }
+}
+
+/* Glassmorphism Styling */
+.glass-dark {
+    background: rgba(15, 15, 20, 0.75);
+    backdrop-filter: blur(28px) saturate(180%);
+    -webkit-backdrop-filter: blur(28px) saturate(180%);
+    border: 1px solid rgba(212, 175, 55, 0.28);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6), inset 0 1px 1px rgba(255, 240, 180, 0.2);
+}
+
+.glass-light {
+    background: rgba(249, 247, 242, 0.85);
+    backdrop-filter: blur(28px) saturate(180%);
+    -webkit-backdrop-filter: blur(28px) saturate(180%);
+    border: 1px solid rgba(184, 142, 34, 0.28);
+    box-shadow: 0 30px 60px rgba(180, 160, 120, 0.15), inset 0 1px 1px rgba(255, 255, 255, 0.9);
+}
+
+/* Video Masking Filters */
+.video-mask-dark {
+    background: radial-gradient(circle at 50% 50%, rgba(7, 7, 9, 0.35) 0%, rgba(7, 7, 9, 0.85) 65%, rgba(7, 7, 9, 1) 100%);
+}
+.video-mask-light {
+    background: radial-gradient(circle at 50% 50%, rgba(249, 247, 242, 0.45) 0%, rgba(249, 247, 242, 0.88) 65%, rgba(249, 247, 242, 1) 100%);
+}
+
+/* 3D Orbit Layout Styling */
+.orbit-container {
+    position: relative;
+    perspective: 1200px;
+}
+
+.orbit-ring {
+    position: absolute;
+    inset: -45px;
+    border-radius: 50%;
+    border: 1.5px solid rgba(212, 175, 55, 0.4);
+    pointer-events: none;
+    box-shadow: 0 0 35px rgba(212, 175, 55, 0.2);
+    animation: ringPulse 4s ease-in-out infinite alternate;
+}
+
+@keyframes ringPulse {
+    0% { transform: scale(0.98); opacity: 0.6; }
+    100% { transform: scale(1.02); opacity: 1; }
+}
+
+/* Reveal Animation Classes */
+.reveal-element {
+    opacity: 0;
+    transform: translateY(35px);
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: opacity, transform;
+}
+.reveal-element.revealed {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Modal Spring Animation */
+.modal-vault-enter {
+    opacity: 0;
+    transform: scale(0.92) translateY(30px);
+}
+.modal-vault-active {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
