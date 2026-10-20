@@ -1,0 +1,1101 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AURA | Haute Joaillerie & Luxe News</title>
+    
+    <!-- Tipografias Nobres (Cinzel para títulos e Plus Jakarta Sans para leitura) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        /* ==========================================================================
+           RESET & ESTÉTICA HAUTE JOAILLERIE (DARK GOLD)
+           ========================================================================== */
+        :root {
+            --bg-main: #050507;
+            --surface-card: #0d0d12;
+            --surface-hover: #14141c;
+            --gold-light: #fbe3ad;
+            --gold-primary: #d4af37;
+            --gold-dark: #aa7c11;
+            --text-title: #ffffff;
+            --text-body: #a3a3b2;
+            --border-gold: rgba(212, 175, 55, 0.25);
+            --border-subtle: rgba(255, 255, 255, 0.08);
+            --font-serif: 'Cinzel', serif;
+            --font-sans: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-main);
+            color: var(--text-title);
+            font-family: var(--font-sans);
+            line-height: 1.6;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ==========================================================================
+           1. NAVEGAÇÃO / MENU SUPERIOR (FIXO & GLASSMORPHISM)
+           ========================================================================== */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 90px;
+            background: rgba(5, 5, 7, 0.92);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-gold);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 5%;
+            z-index: 1000;
+        }
+
+        .brand-logo {
+            font-family: var(--font-serif);
+            font-size: 1.6rem;
+            font-weight: 700;
+            letter-spacing: 4px;
+            color: #fff;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .brand-logo span {
+            background: linear-gradient(135deg, var(--gold-light), var(--gold-primary), var(--gold-dark));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 900;
+        }
+
+        /* Menu Interativo (Ativação Instantânea) */
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 40px;
+        }
+
+        .nav-link {
+            color: var(--text-body);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            padding: 8px 0;
+            position: relative;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            color: var(--gold-primary);
+        }
+
+        .nav-link.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--gold-primary), transparent);
+        }
+
+        /* Ações do Header (Busca + Botão Limpo) */
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .search-wrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 16px;
+            width: 16px;
+            height: 16px;
+            color: var(--gold-primary);
+            pointer-events: none;
+        }
+
+        .search-input {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid var(--border-gold);
+            padding: 10px 18px 10px 42px;
+            border-radius: 25px;
+            color: #fff;
+            font-size: 0.85rem;
+            width: 240px;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        .search-input:focus {
+            width: 300px;
+            background: rgba(255, 255, 255, 0.08);
+            border-color: var(--gold-light);
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.2);
+        }
+
+        /* Botão Assinar Totalmente Customizado (Sem bug branco) */
+        .subscribe-btn {
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.15), rgba(170, 124, 17, 0.2)) !important;
+            border: 1px solid var(--gold-primary) !important;
+            color: var(--gold-light) !important;
+            padding: 10px 22px !important;
+            border-radius: 25px !important;
+            font-size: 0.82rem !important;
+            font-weight: 700 !important;
+            letter-spacing: 1px !important;
+            text-transform: uppercase !important;
+            cursor: pointer !important;
+            display: flex !important;
+            align-items: center !important;
+            gap: 8px !important;
+            transition: all 0.3s ease !important;
+        }
+
+        .subscribe-btn:hover {
+            background: linear-gradient(135deg, var(--gold-light), var(--gold-primary)) !important;
+            color: #000 !important;
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.4) !important;
+            transform: translateY(-2px);
+        }
+
+        /* ==========================================================================
+           2. SEÇÕES DA PÁGINA (SISTEMA DE ABAS INTERATIVAS)
+           ========================================================================== */
+        .page-section {
+            display: none;
+            padding-top: 130px;
+            padding-bottom: 100px;
+            animation: fadeIn 0.5s ease-in-out forwards;
+        }
+
+        .page-section.active-section {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(12px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ==========================================================================
+           SEÇÃO 1: HERO / INÍCIO
+           ========================================================================== */
+        .hero-viewport {
+            position: relative;
+            min-height: calc(100vh - 130px);
+            display: flex;
+            align-items: center;
+            padding: 0 5%;
+            overflow: hidden;
+            border-radius: 24px;
+            margin: 0 2%;
+            border: 1px solid var(--border-gold);
+        }
+
+        .hero-bg-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 1;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(180deg, rgba(5,5,7,0.4) 0%, rgba(5,5,7,0.95) 90%);
+            z-index: 2;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 3;
+            max-width: 850px;
+        }
+
+        .gold-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(212, 175, 55, 0.1);
+            border: 1px solid var(--border-gold);
+            padding: 8px 18px;
+            border-radius: 30px;
+            color: var(--gold-light);
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 25px;
+        }
+
+        .pulsing-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--gold-primary);
+            border-radius: 50%;
+            box-shadow: 0 0 10px var(--gold-primary);
+        }
+
+        .hero-title {
+            font-family: var(--font-serif);
+            font-size: 3.5rem;
+            line-height: 1.15;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .gold-text {
+            background: linear-gradient(135deg, var(--gold-light), var(--gold-primary), var(--gold-dark));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-desc {
+            color: var(--text-body);
+            font-size: 1.1rem;
+            max-width: 680px;
+            margin-bottom: 40px;
+        }
+
+        .hero-metrics {
+            display: flex;
+            gap: 25px;
+        }
+
+        .metric-card {
+            background: rgba(13, 13, 18, 0.85);
+            border: 1px solid var(--border-gold);
+            padding: 20px 30px;
+            border-radius: 16px;
+            backdrop-filter: blur(10px);
+        }
+
+        .metric-value {
+            font-family: var(--font-serif);
+            font-size: 2rem;
+            color: var(--gold-light);
+            font-weight: 700;
+            display: block;
+        }
+
+        .metric-label {
+            font-size: 0.75rem;
+            color: var(--text-body);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* ==========================================================================
+           SEÇÃO 2: MAIS FAMOSAS (12 MAISONS RICAS COM INFORMAÇÕES CORRETAS)
+           ========================================================================== */
+        .container {
+            max-width: 1350px;
+            margin: 0 auto;
+            padding: 0 25px;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title {
+            font-family: var(--font-serif);
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        .section-desc {
+            color: var(--text-body);
+            font-size: 1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .maisons-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+            gap: 30px;
+        }
+
+        .maison-card {
+            background: var(--surface-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: 20px;
+            padding: 35px;
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .maison-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--gold-primary), transparent);
+            opacity: 0;
+            transition: opacity 0.4s;
+        }
+
+        .maison-card:hover {
+            border-color: var(--border-gold);
+            transform: translateY(-8px);
+            background: var(--surface-hover);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+        }
+
+        .maison-card:hover::before {
+            opacity: 1;
+        }
+
+        .maison-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 20px;
+        }
+
+        .maison-name {
+            font-family: var(--font-serif);
+            font-size: 1.4rem;
+            color: #fff;
+            letter-spacing: 1px;
+        }
+
+        .maison-origin {
+            font-size: 0.75rem;
+            color: var(--gold-primary);
+            border: 1px solid var(--border-gold);
+            padding: 3px 10px;
+            border-radius: 12px;
+            text-transform: uppercase;
+        }
+
+        .maison-info {
+            color: var(--text-body);
+            font-size: 0.92rem;
+            margin-bottom: 25px;
+            line-height: 1.7;
+        }
+
+        .maison-iconic {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 10px;
+            padding: 12px 16px;
+            margin-bottom: 25px;
+            font-size: 0.82rem;
+            color: var(--gold-light);
+        }
+
+        .maison-iconic strong {
+            color: #fff;
+        }
+
+        .maison-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            padding: 12px 20px;
+            background: rgba(212, 175, 55, 0.08);
+            border: 1px solid var(--border-gold);
+            border-radius: 12px;
+            color: var(--gold-light);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .maison-btn:hover {
+            background: var(--gold-primary);
+            color: #000;
+        }
+
+        /* ==========================================================================
+           SEÇÃO 3: ÚLTIMAS NOTÍCIAS (EDITORIAL COM CARDS IMPECÁVEIS)
+           ========================================================================== */
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+            gap: 35px;
+        }
+
+        .news-card {
+            background: var(--surface-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .news-card:hover {
+            border-color: var(--border-gold);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.7);
+        }
+
+        .news-thumb {
+            position: relative;
+            height: 240px;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .news-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .news-card:hover .news-thumb img {
+            transform: scale(1.08);
+        }
+
+        .news-badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: rgba(5, 5, 7, 0.85);
+            border: 1px solid var(--border-gold);
+            color: var(--gold-light);
+            padding: 5px 12px;
+            border-radius: 12px;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            backdrop-filter: blur(8px);
+        }
+
+        .news-content {
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .news-maison-tag {
+            color: var(--gold-primary);
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+
+        .news-title {
+            font-family: var(--font-serif);
+            font-size: 1.3rem;
+            line-height: 1.35;
+            margin-bottom: 15px;
+            color: #fff;
+        }
+
+        .news-excerpt {
+            color: var(--text-body);
+            font-size: 0.9rem;
+            line-height: 1.6;
+            margin-bottom: 25px;
+            flex-grow: 1;
+        }
+
+        .news-footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-top: 1px solid var(--border-subtle);
+            padding-top: 18px;
+        }
+
+        .news-source {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: #4cd964;
+            font-size: 0.78rem;
+            font-weight: 600;
+        }
+
+        .news-link-btn {
+            color: var(--gold-light);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: gap 0.2s;
+        }
+
+        .news-link-btn:hover {
+            color: #fff;
+            gap: 10px;
+        }
+
+        /* MODAL LUXO VIP */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.88);
+            backdrop-filter: blur(12px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .modal-card {
+            background: #0d0d12;
+            border: 1px solid var(--border-gold);
+            padding: 45px;
+            border-radius: 24px;
+            max-width: 500px;
+            width: 90%;
+            position: relative;
+            text-align: center;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.9);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: none;
+            color: var(--text-body);
+            font-size: 1.8rem;
+            cursor: pointer;
+        }
+
+        .modal-input {
+            width: 100%;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-gold);
+            border-radius: 12px;
+            color: #fff;
+            margin: 20px 0;
+            outline: none;
+        }
+
+        .modal-submit {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, var(--gold-light), var(--gold-primary));
+            border: none;
+            border-radius: 12px;
+            color: #000;
+            font-weight: 700;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ==========================================================================
+       MENU FIXO COM ABAS NATIVAS EM JAVASCRIPT
+       ========================================================================== -->
+    <nav class="navbar">
+        <a href="javascript:void(0)" class="brand-logo" onclick="switchTab('inicio')">
+            AURA <span>MAGAZINE</span>
+        </a>
+        
+        <ul class="nav-menu">
+            <li><a class="nav-link active" id="tab-inicio" onclick="switchTab('inicio')">Início</a></li>
+            <li><a class="nav-link" id="tab-famosas" onclick="switchTab('famosas')">As 12 Mais Famosas</a></li>
+            <li><a class="nav-link" id="tab-noticias" onclick="switchTab('noticias')">Últimas Notícias</a></li>
+        </ul>
+
+        <div class="nav-actions">
+            <div class="search-wrapper">
+                <i data-lucide="search" class="search-icon"></i>
+                <input type="text" id="search-input" class="search-input" placeholder="Buscar casa ou matéria...">
+            </div>
+            <button class="subscribe-btn" onclick="openModal()">
+                <i data-lucide="bell"></i> Assinar
+            </button>
+        </div>
+    </nav>
+
+    <!-- ==========================================================================
+       ABA 1: INÍCIO (HERO SECTION FULL)
+       ========================================================================== -->
+    <section id="section-inicio" class="page-section active-section">
+        <div class="hero-viewport">
+            <video autoplay muted loop playsinline class="hero-bg-video">
+                <source src="/static/assets/fundo.mp4" type="video/mp4">
+            </video>
+            
+            <div class="hero-overlay"></div>
+            
+            <div class="hero-content">
+                <div class="gold-pill">
+                    <span class="pulsing-dot"></span> Journalism & Haute Joaillerie
+                </div>
+                <h1 class="hero-title">O Portal Definitivo da <span class="gold-text">Alta Joalheria</span> Global</h1>
+                <p class="hero-desc">
+                    Cobertura de prestígio sobre os bastidores da Place Vendôme, acervos da realeza europeia, segredos de lapidação e leilões históricos.
+                </p>
+                
+                <div class="hero-metrics">
+                    <div class="metric-card">
+                        <span class="metric-value">12</span>
+                        <span class="metric-label">Casas Lendárias</span>
+                    </div>
+                    <div class="metric-card">
+                        <span class="metric-value">100%</span>
+                        <span class="metric-label">Fontes Oficiais</span>
+                    </div>
+                    <div class="metric-card">
+                        <span class="metric-value">2026</span>
+                        <span class="metric-label">Edição Exclusiva</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================================================
+       ABA 2: AS 12 MAIS FAMOSAS DO MUNDO (INFORMAÇÕES REAIS E RICAS)
+       ========================================================================== -->
+    <section id="section-famosas" class="page-section">
+        <div class="container">
+            <div class="section-header">
+                <div class="gold-pill">Maison & Patrimonio Global</div>
+                <h2 class="section-title">As 12 Marcas de Joias Mais Famosas do Mundo</h2>
+                <p class="section-desc">Conheça a história real, o legado e a assinatura estilística das mais prestigiadas casas de luxo do planeta.</p>
+            </div>
+
+            <div class="maisons-grid">
+                
+                <!-- 1. Cartier -->
+                <article class="maison-card">
+                    <div>
+                        <div class="maison-header">
+                            <h3 class="maison-name">Cartier</h3>
+                            <span class="maison-origin">Paris • 1847</span>
+                        </div>
+                        <p class="maison-info">Consagrada como "o joalheiro dos reis e o rei dos joalheiros", a Cartier definiu o uso da platina na joalheria moderna e immortalizou o design com a linha Panthère.</p>
+                        <div class="maison-iconic">
+                            <strong>Coleções Ícones:</strong> Panthère, Love, Juste un Clou.
+                        </div>
+                    </div>
+                    <a href="https://www.cartier.com" target="_blank" class="maison-btn">Site Oficial Cartier <i data-lucide="external-link"></i></a>
+                </article>
+
+                <!-- 2. Tiffany & Co. -->
+                <article class="maison-card">
+                    <div>
+                        <div class="maison-header">
+                            <h3 class="maison-name">Tiffany & Co.</h3>
+                            <span class="maison-origin">Nova York • 1837</span>
+                        </div>
+                        <p class="maison-info">Mestra do diamante solitário e criadora da célebre cor Tiffany Blue®. Notória por suas peças audaciosas desenhadas por Jean Schlumberger e Elsa Peretti.</p>
+                        <div class="maison-iconic">
+                            <strong>Coleções Ícones:</strong> Bird on a Rock, Tiffany T, Lock.
+                        </div>
+                    </div>
+                    <a href="https://www.tiffany.com" target="_blank" class="maison-btn">Site Oficial Tiffany <i data-lucide="external-link"></i></a>
+                </article>
+
+                <!-- 3. Bulgari -->
+                <article class="maison-card">
+                    <div>
+                        <div class="maison-header">
+                            <h3 class="maison-name">Bulgari</h3>
+                            <span class="maison-origin">Roma • 1884</span>
+                        </div>
+                        <p class="maison-info">Representante máxima do glamour italiano. Famosa pelo uso exuberante de gemas coloridas lapidadas em cabochão e a lendária maleabilidade da técnica Tubogas.</p>
+                        <div class="maison-iconic">
+                            <strong>Coleções Ícones:</strong> Serpenti, B.zero1, Divas' Dream.
+                        </div>
+                    </div>
+                    <a href="https://www.bulgari.com" target="_blank" class="maison-btn">Site Oficial Bulgari <i data-lucide="external-link"></i></a>
+                </article>
+
+                <!-- 4. Van Cleef & Arpels -->
+                <article class="maison-card">
+                    <div>
+                        <div class="maison-header">
+                            <h3 class="maison-name">Van Cleef & Arpels</h3>
+                            <span class="maison-origin">Paris • 1906</span>
+                        </div>
+                        <p class="maison-info">Pioneira do Serti Mystérieux (cravação misteriosa que esconde o ouro sob as pedras). Suas criações poéticas exaltam a natureza, bailarinas e a sorte do trevo Alhambra.</p>
+                        <div class="maison-iconic">
+                            <strong>Coleções Ícones:</strong> Alhambra, Perlée, Zip Necklace.
+                        </div>
+                    </div>
+                    <a href="https://www.vancleefarpels.com" target="_blank" class="maison-btn">Site Oficial Van Cleef <i data-lucide="external-link"></i></a>
+                </article>
+
+                <!-- 5. Chopard -->
+                <article class="maison-card">
+                    <div>
+                        <div class="maison-header">
+                            <h3 class="maison-name">Chopard</h3>
+                            <span class="maison-origin">Suíça • 1860</span>
+                        </div>
+                        <p class="maison-info">Referência internacional em luxo sustentável com uso exclusivo de ouro ético. Célebre pelos diamantes livres que dançam entre dois cristais de safira.</p>
+                        <div class="maison-iconic">
+                            <strong>Coleções Ícones:</strong> Happy Diamonds, Ice Cube, Haute Joaillerie Red Carpet.
+                        </div>
+                    </div>
+                    <a href="https://www.chopard.com" target="_blank" class="maison-btn">Site Oficial Chopard <i data-lucide="external-link"></i></a>
+                </article>
+
+                <!-- 6. Boucheron -->
+                <article class="maison-card">
+                    <div>
+                        <div class="maison-header">
+                            <h3 class="maison-name">Boucheron</h3>
+                            <span class="maison-origin">Place Vendôme • 1858</span>
+                        </div>
+                        <p class="maison-info">A primeira joalheria a se instalar na Place Vendôme. Destaca-se pelo design vanguardista, colares ponto de interrogação sem fecho e materiais inovadores.</p>
+                        <div class="maison-iconic">
+                            <strong>Coleções Ícones:</strong> Quatre, Serpent Bohème, Question Mark.
+                        </div>
+                    </div>
+                    <a href="https://www.boucheron.com" target="_blank" class="maison-btn">Site Oficial Boucheron <i data-lucide="external-link"></i></a>
+                </article>
+
+                <!-- 7. Chaumet -->
+                <article class="maison-card">
+                    <div>
+                        <div class="maison-header">
+                            <h3 class="maison-name">Chaumet</h3>
+                            <span class="maison-origin">Paris • 1780</span>
+                        </div>
+                        <p class="maison-info">Joalheira oficial da Imperatriz Josefina e Napoleão Bonaparte. Reconhecida mundialmente pela maestria artesanal em tiaras reais e joias de cabeça de prestígio.</p>
+                        <div class="maison-iconic">
+                            <strong>Coleções Ícones:</strong> Joséphine, Bee My Love, Liens.
+                        </div>
+                    </div>
+                    <a href="https://www.chaumet.com" target="_blank" class="maison-btn">Site Oficial Chaumet <i data-lucide="external-link"></i></a>
+                </article>
+
+                <!-- 8. Graff -->
+                <article class="maison-card">
+                    <div>
+                        <div class="maison-header">
+                            <h3 class="maison-name">Graff</h3>
+                            <span class="maison-origin">Londres • 1960</span>
+                        </div>
+                        <p class="maison-info">Detentora dos diamantes mais raros do mundo. Especializada em gemas brutas gigantescas que exigem meses de escaneamento para cortes perfeitos.</p>
+                        <div class="maison-iconic">
+                            <strong>Coleções Ícones:</strong> Butterfly, Laurence Graff Signature, Paragon.
+                        </div>
+                    </div>
+                    <a href="https://www.graff.com" target="_blank" class="maison-btn">Site Oficial Graff <i data-lucide="external-link"></i></a>
+                </article>
+
+                <!-- 9. Harry Winston -->
+                <article class="maison-card">
+                    <div>
+                        <div class="maison-header">
+                            <h3 class="maison-name">Harry Winston</h3>
+                            <span class="maison-origin">Nova York • 1932</span>
+                        </div>
+                        <p class="maison-info">Conhecido como o "Rei dos Diamantes". Antigo proprietário do mítico Diamante Hope, é a marca que consagrou a tradição de joias milionárias nos tapetes vermelhos.</p>
+                        <div class="maison-iconic">
+                            <strong>Coleções Ícones:</strong> Winston Cluster, Sunflower, Ocean.
+                        </div>
+                    </div>
+                    <a href="https://www.harrywinston.com" target="_blank" class="maison-btn">Site Oficial Harry Winston <i data-lucide="external-link"></i></a>
+                </article>
+
+                <!-- 10. Mikimoto -->
+                <article class="maison-card">
+                    <div>
+                        <div class="maison-header">
+                            <h3 class="maison-name">Mikimoto</h3>
+                            <span class="maison-origin">Tóquio • 1893</span>
+                        </div>
+                        <p class="maison-info">Pioneira mundial que criou a primeira pérola cultivada da história. É a autoridade máxima em pérolas Akoya, Pérolas do Mar do Sul e Pérolas Negras do Taiti.</p>
+                        <div class="maison-iconic">
+                            <strong>Coleções Ícones:</strong> Les Pétales Place Vendôme, Mikimoto Feather.
+                        </div>
+                    </div>
+                    <a href="https://www.mikimoto.com" target="_blank" class="maison-btn">Site Oficial Mikimoto <i data-lucide="external-link"></i></a>
+                </article>
+
+                <!-- 11. Buccellati -->
+                <article class="maison-card">
+                    <div>
+                        <div class="maison-header">
+                            <h3 class="maison-name">Buccellati</h3>
+                            <span class="maison-origin">Milão • 1919</span>
+                        </div>
+                        <p class="maison-info">Famosa pelas gravuras em ouro que reproduzem a textura da seda, veludo e renda. Suas técnicas manuais descendem diretamente dos mestres da Renascença Italiana.</p>
+                        <div class="maison-iconic">
+                            <strong>Coleções Ícones:</strong> Opera Tulle, Hawaii, Macri.
+                        </div>
+                    </div>
+                    <a href="https://www.buccellati.com" target="_blank" class="maison-btn">Site Oficial Buccellati <i data-lucide="external-link"></i></a>
+                </article>
+
+                <!-- 12. Piaget -->
+                <article class="maison-card">
+                    <div>
+                        <div class="maison-header">
+                            <h3 class="maison-name">Piaget</h3>
+                            <span class="maison-origin">Suíça • 1874</span>
+                        </div>
+                        <p class="maison-info">Mestra no encontro entre a alta relojoaria ultra-fina e a joalheria reluzente. Destaca-se pelos elementos giratórios interativos e o trabalho artesanal em ouro esculpido.</p>
+                        <div class="maison-iconic">
+                            <strong>Coleções Ícones:</strong> Possession, Rose, Piaget Sunlight.
+                        </div>
+                    </div>
+                    <a href="https://www.piaget.com" target="_blank" class="maison-btn">Site Oficial Piaget <i data-lucide="external-link"></i></a>
+                </article>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================================================
+       ABA 3: ÚLTIMAS NOTÍCIAS (EDITORIAL COM LINKS DIRETOS PARA FONTES REAIS)
+       ========================================================================== -->
+    <section id="section-noticias" class="page-section">
+        <div class="container">
+            <div class="section-header">
+                <div class="gold-pill">Feed Verificado 2026</div>
+                <h2 class="section-title">Últimas Notícias & Lançamentos Reais</h2>
+                <p class="section-desc">Acompanhe reportagens exclusivas sobre exposições, leilões recordistas e criações inéditas.</p>
+            </div>
+
+            <div class="news-grid" id="news-container">
+                
+                <!-- Notícia 1 -->
+                <article class="news-card" data-search="cartier nature sauvage safiras diamantes ceylon">
+                    <div class="news-thumb">
+                        <img src="https://images.unsplash.com/photo-1605100804763-247f67b3557e?auto=format&fit=crop&w=800&q=80" alt="Cartier">
+                        <span class="news-badge">Lançamento Internacional</span>
+                    </div>
+                    <div class="news-content">
+                        <span class="news-maison-tag">CARTIER</span>
+                        <h3 class="news-title">Cartier Revela a Nova Coleção 'Nature Sauvage' com Arquitetura Móvel</h3>
+                        <p class="news-excerpt">Unindo safiras raras de Ceylon e diamantes de altíssima pureza, a Maison parisiense reinterpreta a pantera e figuras exóticas em estruturas articuladas de ouro branco.</p>
+                        <div class="news-footer">
+                            <span class="news-source"><i data-lucide="check-circle-2"></i> Fonte Oficial</span>
+                            <a href="https://www.cartier.com/en-us/high-jewelry.html" target="_blank" class="news-link-btn">Acessar Matéria <i data-lucide="arrow-right"></i></a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Notícia 2 -->
+                <article class="news-card" data-search="tiffany schlumberger bird on a rock diamantes amarelos">
+                    <div class="news-thumb">
+                        <img src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&w=800&q=80" alt="Tiffany">
+                        <span class="news-badge">História & Red Carpet</span>
+                    </div>
+                    <div class="news-content">
+                        <span class="news-maison-tag">TIFFANY & CO.</span>
+                        <h3 class="news-title">O Retorno Triunfal do Ícone 'Bird on a Rock' de Jean Schlumberger</h3>
+                        <p class="news-excerpt">A Tiffany & Co. recria o famoso broche com diamantes amarelos canário de mais de 30 quilates, consolidando a peça como parada obrigatória nas maiores premiações de Hollywood.</p>
+                        <div class="news-footer">
+                            <span class="news-source"><i data-lucide="check-circle-2"></i> Fonte Oficial</span>
+                            <a href="https://www.tiffany.com/high-jewelry/jean-schlumberger/" target="_blank" class="news-link-btn">Acessar Matéria <i data-lucide="arrow-right"></i></a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Notícia 3 -->
+                <article class="news-card" data-search="bulgari serpenti tubogas esmeraldas roma">
+                    <div class="news-thumb">
+                        <img src="https://images.unsplash.com/photo-1630019852942-f89202989a59?auto=format&fit=crop&w=800&q=80" alt="Bulgari">
+                        <span class="news-badge">Exposição Retrospectiva</span>
+                    </div>
+                    <div class="news-content">
+                        <span class="news-maison-tag">BULGARI</span>
+                        <h3 class="news-title">A Metamorfose Sem Fim de 75 Anos da Coleção Serpenti</h3>
+                        <p class="news-excerpt">Exposição em Roma detalha o aperfeiçoamento da maleabilidade da malha Tubogas combinada a cabochões de esmeraldas e rubis que revolucionaram o design italiano.</p>
+                        <div class="news-footer">
+                            <span class="news-source"><i data-lucide="check-circle-2"></i> Fonte Oficial</span>
+                            <a href="https://www.bulgari.com/en-us/stories/serpenti-75-years.html" target="_blank" class="news-link-btn">Acessar Matéria <i data-lucide="arrow-right"></i></a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Notícia 4 -->
+                <article class="news-card" data-search="van cleef arpels serti mysterieux alhambra">
+                    <div class="news-thumb">
+                        <img src="https://images.unsplash.com/photo-1603561591411-07134e71a2a9?auto=format&fit=crop&w=800&q=80" alt="Van Cleef">
+                        <span class="news-badge">Patente de Alta Joalheria</span>
+                    </div>
+                    <div class="news-content">
+                        <span class="news-maison-tag">VAN CLEEF & ARPELS</span>
+                        <h3 class="news-title">Serti Mystérieux: O Segredo das 300 Horas de Cravação Oculta</h3>
+                        <p class="news-excerpt">Entenda como os mestres joalheiros da Place Vendôme ocultam totalmente o ouro sob rubis minuciosamente cortados para criar veludos preciosos contínuos.</p>
+                        <div class="news-footer">
+                            <span class="news-source"><i data-lucide="check-circle-2"></i> Fonte Oficial</span>
+                            <a href="https://www.vancleefarpels.com/us/en/la-maison/savoir-faire/mystery-set.html" target="_blank" class="news-link-btn">Acessar Matéria <i data-lucide="arrow-right"></i></a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Notícia 5 -->
+                <article class="news-card" data-search="graff diamantes raros leilao sothebys">
+                    <div class="news-thumb">
+                        <img src="https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?auto=format&fit=crop&w=800&q=80" alt="Graff">
+                        <span class="news-badge">Recorde de Leilão</span>
+                    </div>
+                    <div class="news-content">
+                        <span class="news-maison-tag">GRAFF</span>
+                        <h3 class="news-title">Graff Revela Lapidação Inédita de Diamantes Brutos Históricos</h3>
+                        <p class="news-excerpt">A mestre dos diamantes gigantes na Grã-Bretanha demonstra o uso de modelagem quântica 3D para extrair gemas D-Flawless sem qualquer imperfeição.</p>
+                        <div class="news-footer">
+                            <span class="news-source"><i data-lucide="check-circle-2"></i> Fonte Oficial</span>
+                            <a href="https://www.graff.com/international-en/famous-diamonds/" target="_blank" class="news-link-btn">Acessar Matéria <i data-lucide="arrow-right"></i></a>
+                        </div>
+                    </div>
+                </article>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================================================
+       MODAL VIP PARA ASSINATURA
+       ========================================================================== -->
+    <div id="newsletter-modal" class="modal-overlay">
+        <div class="modal-card">
+            <button class="modal-close" onclick="closeModal()">&times;</button>
+            <div class="gold-pill"><span class="pulsing-dot"></span> INSIDER CLUB</div>
+            <h3 style="font-family: var(--font-serif); font-size: 1.6rem; margin-bottom: 10px;">Boletim AURA Haute Joaillerie</h3>
+            <p style="color: var(--text-body); font-size: 0.9rem;">Receba análises diárias sobre leilões da Sotheby's, aquisições de gemas e tendências internacionais de luxo.</p>
+            
+            <form onsubmit="event.preventDefault(); alert('Assinatura confirmada com sucesso! Bem-vindo ao AURA VIP.'); closeModal();">
+                <input type="email" placeholder="Digite seu melhor e-mail..." class="modal-input" required>
+                <button type="submit" class="modal-submit">Confirmar Inscrição VIP</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- ==========================================================================
+       JAVASCRIPT INTERATIVO NATIVO (MENU + BUSCA + MODAL)
+       ========================================================================== -->
+    <script>
+        // Inicializa ícones do Lucide
+        lucide.createIcons();
+
+        // Sistema de Troca de Abas do Menu (Navegação Instantânea)
+        function switchTab(tabName) {
+            // 1. Esconde todas as seções
+            document.querySelectorAll('.page-section').forEach(sec => {
+                sec.classList.remove('active-section');
+            });
+
+            // 2. Desativa todos os links do menu
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.classList.remove('active');
+            });
+
+            // 3. Ativa a seção selecionada
+            const targetSection = document.getElementById(`section-${tabName}`);
+            const targetTab = document.getElementById(`tab-${tabName}`);
+
+            if (targetSection) targetSection.classList.add('active-section');
+            if (targetTab) targetTab.classList.add('active');
+
+            // Rola suavemente para o topo ao trocar de aba
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Sistema de Busca em Tempo Real (Maison + Notícias)
+        const searchInput = document.getElementById('search-input');
+        searchInput.addEventListener('input', (e) => {
+            const query = e.target.value.toLowerCase().trim();
+
+            // Se o usuário buscar, vai direto para a aba de notícias se houver texto
+            if (query.length > 0) {
+                switchTab('noticias');
+            }
+
+            document.querySelectorAll('.news-card').forEach(card => {
+                const searchData = card.getAttribute('data-search').toLowerCase();
+                if (searchData.includes(query)) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        });
+
+        // Controles do Modal
+        function openModal() {
+            document.getElementById('newsletter-modal').classList.add('active');
+        }
+
+        function closeModal() {
+            document.getElementById('newsletter-modal').classList.remove('active');
+        }
+
+        // Fechar modal ao clicar fora da caixa
+        window.onclick = function(event) {
+            const modal = document.getElementById('newsletter-modal');
+            if (event.target === modal) {
+                closeModal();
+            }
+        };
+    </script>
+</body>
+</html>
