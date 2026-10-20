@@ -1,6 +1,6 @@
-/* ----------------------------------------------------
+/* -------------------------------------------------------
    1. AS 12 CASAS LENDÁRIAS DE ALTA JOAOHERIA (MOTOR 3D)
----------------------------------------------------- */
+------------------------------------------------------- */
 const jewels3D = [
     {
         title: "Colar Mouawad L'Incomparable",
@@ -104,7 +104,7 @@ const jewels3D = [
         desc: "Peça espetacular cravejada de diamantes e franjas reluzentes com asas de anjo monumentais.",
         site: "https://www.victoriassecret.com",
         color: "#E2E8F0",
-        img: "../static/assets/kylie_fantasy_bra.jpg"
+        img: "../static/assets/kylie_fantasy_braa.jpg"
     },
 ];
 
