@@ -1,283 +1,458 @@
-<!DOCTYPE html>
-<html lang="pt-BR" class="dark scroll-smooth">
+<!doctype html>
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>APHRODITE'S VAULT — O Portal Definitivo da Alta Joalheria & Fantasy Bras</title>
-
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {
-                    colors: {
-                        obsidian: '#070709',
-                        onyx: '#0F0F14',
-                        blackvelvet: '#13131A',
-                        alabaster: '#F9F7F2',
-                        ivory: '#F3EFE6',
-                        pearl: '#FAF8F5',
-                        champagne: {
-                            50: '#FFFDF5',
-                            100: '#FFF8E1',
-                            200: '#FBEBBA',
-                            300: '#F7DB8B',
-                            400: '#EEC558',
-                            500: '#D4AF37',
-                            600: '#B88E22',
-                            700: '#8E6814',
-                            800: '#64480D',
-                            900: '#3D2A05'
-                        }
-                    },
-                    fontFamily: {
-                        cinzel: ['Cinzel', 'serif'],
-                        serif: ['Cormorant Garamond', 'Playfair Display', 'serif'],
-                        sans: ['Montserrat', 'sans-serif']
-                    },
-                    boxShadow: {
-                        'gold-glow': '0 0 35px rgba(212, 175, 55, 0.25)',
-                        'gold-glow-lg': '0 0 75px rgba(212, 175, 55, 0.45)',
-                        'inner-gold': 'inset 0 1px 2px rgba(255, 235, 170, 0.3)'
-                    }
-                }
-            }
-        }
-    </script>
-
-    <!-- Google Fonts -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#0a0a0a">
+    <meta name="description" content="Descubra a alta joalheria, explore lapidações e diamantes e conheça o ateliê de joias personalizadas da Aphrodite's Vault.">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="pt_BR">
+    <meta property="og:site_name" content="Aphrodite's Vault">
+    <meta property="og:title" content="Aphrodite's Vault — histórias que brilham">
+    <meta property="og:description" content="Uma curadoria dedicada à arte da alta joalheria e à beleza dos diamantes.">
+    <meta property="og:image" content="{{ url_for('static', path='assets/Demi-Fine Diamanté Wings Ring.avif') }}">
+    <meta name="twitter:card" content="summary_large_image">
+    <title>Aphrodite's Vault — alta joalheria &amp; diamantes</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,600&family=Montserrat:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
-
-    <!-- Font Awesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-
-    <!-- Estilos Personalizados -->
-    <link rel="stylesheet" href="../static/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', path='css/style.css') }}">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "CollectionPage",
+          "name": "Aphrodite's Vault — alta joalheria & diamantes",
+          "description": "Curadoria editorial de joias, lapidações e maisons de alta joalheria.",
+          "inLanguage": "pt-BR",
+          "mainEntity": {
+            "@type": "ItemList",
+            "name": "Destaques de alta joalheria",
+            "itemListElement": [
+              {"@type": "ListItem", "position": 1, "name": "Anéis e diamantes"},
+              {"@type": "ListItem", "position": 2, "name": "Colares e gemas"},
+              {"@type": "ListItem", "position": 3, "name": "Histórias das grandes maisons"}
+            ]
+          }
+        },
+        {
+          "@type": "Product",
+          "name": "Anel Diamanté Wings",
+          "category": "Anel com diamantes",
+          "description": "Composição escultural com diamantes, apresentada na curadoria editorial Aphrodite's Vault.",
+          "image": "{{ url_for('static', path='assets/Demi-Fine Diamanté Wings Ring.avif') }}",
+          "brand": {"@type": "Brand", "name": "Aphrodite's Vault"},
+          "additionalProperty": {
+            "@type": "PropertyValue",
+            "name": "Disponibilidade comercial",
+            "value": "Peça apresentada como referência editorial; consultar disponibilidade."
+          }
+        },
+        {
+          "@type": "Article",
+          "headline": "Os 4Cs: um vocabulário para apreciar diamantes",
+          "description": "Introdução às características de lapidação, cor, pureza e quilate.",
+          "inLanguage": "pt-BR",
+          "mainEntityOfPage": "#artigo-4cs",
+          "author": {"@type": "Organization", "name": "Aphrodite's Vault"}
+        },
+        {
+          "@type": "Article",
+          "headline": "O brilho que permanece: cuidar de ouro e platina",
+          "description": "Hábitos de conservação para joias de ouro e platina.",
+          "inLanguage": "pt-BR",
+          "mainEntityOfPage": "#artigo-metais",
+          "author": {"@type": "Organization", "name": "Aphrodite's Vault"}
+        },
+        {
+          "@type": "Article",
+          "headline": "O ajuste perfeito: encontrando o aro ideal",
+          "description": "Orientações para entender medidas e ajustes de anéis.",
+          "inLanguage": "pt-BR",
+          "mainEntityOfPage": "#artigo-aro",
+          "author": {"@type": "Organization", "name": "Aphrodite's Vault"}
+        }
+      ]
+    }
+    </script>
+    <script src="{{ url_for('static', path='js/script.js') }}" defer></script>
 </head>
-<body class="bg-obsidian text-slate-100 font-sans antialiased selection:bg-champagne-500 selection:text-obsidian transition-colors duration-700 dark:bg-obsidian dark:text-slate-100 light:bg-alabaster light:text-slate-900 overflow-x-hidden relative">
+<body>
+    <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+    <div class="announcement">ALTA JOALHERIA · CRIAÇÕES PARA CONTAR A SUA HISTÓRIA <span aria-hidden="true">✳</span></div>
 
-    <!-- CANVAS PARA PARTÍCULAS DOURADAS FLUTUANTES NO AMBIENTE -->
-    <canvas id="ambientCanvas" class="fixed inset-0 z-0 pointer-events-none opacity-40"></canvas>
-
-    <!-- CABEÇALHO COM VÍDEO CINEMÁTICO -->
-    <header class="relative min-h-screen flex flex-col justify-between overflow-hidden z-10">
-        
-        <!-- VÍDEO 4K DE FUNDO -->
-        <div class="absolute inset-0 z-0 overflow-hidden">
-            <video autoplay loop muted playsinline class="w-full h-full object-cover scale-105">
-                <source src="../static/assets/fundo 3.mp4" type="video/mp4">
-            </video>
-            <div id="videoMask" class="absolute inset-0 video-mask-dark transition-all duration-700"></div>
-        </div>
-
-        <!-- BARRA DE NAVEGAÇÃO -->
-        <nav class="relative z-20 px-6 sm:px-12 lg:px-20 py-8 flex items-center justify-between">
-            <!-- Logo -->
-            <a href="#" class="group flex items-center gap-4">
-                <div class="w-12 h-12 rounded-full border border-champagne-500/40 flex items-center justify-center bg-obsidian/40 dark:bg-obsidian/40 light:bg-white/40 backdrop-blur-xl group-hover:border-champagne-400 group-hover:shadow-gold-glow transition-all duration-500">
-                    <i class="fa-solid fa-gem text-champagne-400 text-lg group-hover:scale-110 transition-transform"></i>
-                </div>
-                <div class="flex flex-col">
-                    <span class="font-cinzel text-2xl font-black tracking-[0.3em] gold-shimmer-text">APHRODITE'S</span>
-                    <span class="font-cinzel text-[10px] tracking-[0.45em] text-champagne-200/80 dark:text-champagne-200/80 light:text-champagne-800 uppercase -mt-1 font-semibold">VAULT • HAUTE JOAILLERIE</span>
-                </div>
+    <header class="site-header">
+        <nav class="navigation shell" aria-label="Navegação principal">
+            <a class="wordmark" href="#inicio" aria-label="Aphrodite's Vault — início">
+                <span class="wordmark-symbol" aria-hidden="true">A</span>
+                <span class="wordmark-name">APHRODITE'S <span>VAULT</span></span>
             </a>
 
-            <!-- Links de Navegação -->
-            <div class="hidden lg:flex items-center gap-10 px-8 py-3 rounded-full border border-champagne-500/25 bg-obsidian/40 dark:bg-obsidian/40 light:bg-white/40 backdrop-blur-xl text-xs font-cinzel font-medium tracking-[0.2em] text-slate-300 dark:text-slate-300 light:text-slate-700">
-                <a href="#joias-3d" class="hover:text-champagne-400 transition-colors uppercase py-1 relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[1px] after:bg-champagne-400 hover:after:w-full after:transition-all">Visualizador 3D</a>
-                <a href="#fantasy-bras" class="hover:text-champagne-400 transition-colors uppercase py-1 relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[1px] after:bg-champagne-400 hover:after:w-full after:transition-all">Fantasy Bras</a>
-                <a href="#maisons" class="hover:text-champagne-400 transition-colors uppercase py-1 relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[1px] after:bg-champagne-400 hover:after:w-full after:transition-all">Casas Lendárias</a>
-                <a href="#noticias" class="hover:text-champagne-400 transition-colors uppercase py-1 relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[1px] after:bg-champagne-400 hover:after:w-full after:transition-all">Notícias do Setor</a>
+            <button class="menu-toggle icon-button" type="button" aria-expanded="false" aria-controls="primary-links" aria-label="Abrir menu">
+                <span></span><span></span>
+            </button>
+
+            <div class="nav-links" id="primary-links">
+                <div class="menu-wrap">
+                    <button class="nav-link menu-trigger" type="button" aria-expanded="false" aria-controls="mega-menu">
+                        Explorar <span class="chevron" aria-hidden="true">⌄</span>
+                    </button>
+                    <div class="mega-menu" id="mega-menu" hidden>
+                        <p class="eyebrow">Explore por universo</p>
+                        <a href="#colecao" data-category-link="todos">Alta joalheria <span aria-hidden="true">↗</span></a>
+                        <a href="#colecao" data-category-link="aneis">Anéis de noivado <span aria-hidden="true">↗</span></a>
+                        <a href="#gemas">Gemas raras <span aria-hidden="true">↗</span></a>
+                        <a href="#atelier">Ateliê sob medida <span aria-hidden="true">↗</span></a>
+                        <a href="#colecao">Coleções exclusivas <span aria-hidden="true">↗</span></a>
+                    </div>
+                </div>
+                <a class="nav-link" href="#gemas">Diamantes</a>
+                <a class="nav-link" href="#colecao">Coleções</a>
+                <a class="nav-link" href="#atelier">Ateliê privado</a>
             </div>
 
-            <!-- Botões de Ação -->
-            <div class="flex items-center gap-4">
-                <button onclick="toggleLuxeTheme()" class="w-12 h-12 rounded-full border border-champagne-500/30 flex items-center justify-center bg-obsidian/40 dark:bg-obsidian/40 light:bg-white/60 backdrop-blur-xl hover:border-champagne-400 transition-all text-champagne-400 shadow-lg" title="Alternar Tema (Preto/Branco e Dourado)">
-                    <i id="themeIcon" class="fa-solid fa-moon text-base"></i>
-                </button>
-
-                <button onclick="openVaultModal()" class="px-7 py-3 rounded-full border border-champagne-500/50 bg-gradient-to-r from-champagne-600/30 via-champagne-500/20 to-transparent hover:from-champagne-500 hover:to-champagne-600 hover:text-obsidian backdrop-blur-xl text-xs font-cinzel font-semibold tracking-[0.2em] transition-all duration-500 shadow-gold-glow flex items-center gap-3">
-                    <i class="fa-regular fa-envelope text-champagne-400 text-xs"></i>
-                    <span>RECEBER NOTÍCIAS</span>
-                </button>
-            </div>
+            <form class="search-form" role="search" autocomplete="off">
+                <label class="visually-hidden" for="site-search">Buscar joias e histórias</label>
+                <button class="search-icon" type="button" aria-label="Abrir busca">⌕</button>
+                <input id="site-search" type="search" role="combobox" placeholder="Buscar uma história..." aria-autocomplete="list" aria-haspopup="listbox" aria-controls="search-suggestions" aria-expanded="false">
+                <div class="search-suggestions" id="search-suggestions" role="listbox" aria-label="Sugestões de busca" hidden></div>
+            </form>
         </nav>
-
-        <!-- HERO PRINCIPAL -->
-        <div class="relative z-10 max-w-6xl mx-auto px-6 text-center my-auto py-20 flex flex-col items-center reveal-element">
-            <div class="inline-flex items-center gap-3 px-6 py-2.5 rounded-full border border-champagne-500/35 bg-obsidian/50 dark:bg-obsidian/50 light:bg-white/50 backdrop-blur-xl mb-8 shadow-inner-gold">
-                <span class="w-2.5 h-2.5 rounded-full bg-champagne-400 animate-ping"></span>
-                <span class="font-cinzel text-[11px] tracking-[0.35em] uppercase text-champagne-300 dark:text-champagne-300 light:text-champagne-900 font-semibold">O ACERVO DEFINITIVO • HAUTE JOAILLERIE & LES MAISONS</span>
-            </div>
-
-            <h1 class="font-serif text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-normal leading-[1.05] tracking-tight mb-8">
-            Alta Joalheria Mundial <br>
-                <span class="italic font-light gold-shimmer-text"></span>
-            </h1>
-
-            <p class="max-w-3xl font-sans font-light text-base sm:text-lg md:text-xl text-slate-300 dark:text-slate-300 light:text-slate-700 leading-relaxed mb-12 tracking-wide">
-                Explore a história, o design e o brilho incomparável das 12 casas mais prestigiadas do mundo através de uma experiência tridimensional exclusiva.
-            </p>
-
-            <div class="flex flex-col sm:flex-row items-center gap-6">
-                <a href="#joias-3d" class="px-10 py-4 rounded-full gold-shimmer-bg text-obsidian font-cinzel font-bold text-xs tracking-[0.25em] hover:shadow-gold-glow-lg hover:scale-105 transition-all duration-500 shadow-xl flex items-center gap-3">
-                    <i class="fa-solid fa-cube text-sm"></i>
-                    <span>INTERAGIR EM 3D</span>
-                </a>
-                <a href="#fantasy-bras" class="px-8 py-4 rounded-full border border-champagne-500/40 bg-obsidian/40 dark:bg-obsidian/40 light:bg-white/40 backdrop-blur-xl font-cinzel font-medium text-xs tracking-[0.2em] hover:border-champagne-400 transition-all flex items-center gap-3">
-                    <i class="fa-solid fa-gem text-champagne-400"></i>
-                    <span>FANTASY BRAS HISTÓRICOS</span>
-                </a>
-            </div>
-        </div>
-
-        <!-- MARQUEE INFORMATIVO -->
-        <div class="relative z-10 border-t border-champagne-500/20 py-4 bg-obsidian/85 dark:bg-obsidian/85 light:bg-alabaster/85 backdrop-blur-xl overflow-hidden">
-            <div class="flex whitespace-nowrap animate-[marquee_40s_linear_infinite] gap-16 font-cinzel text-[11px] tracking-[0.3em] text-champagne-300/90 dark:text-champagne-300/90 light:text-champagne-900 font-medium">
-                <span>✦ RED HOT FANTASY BRA ($15 MILHÕES) — O SUTIÃ MAIS VALIOSO DA HISTÓRIA (GUINNESS WORLD RECORDS)</span>
-                <span>✦ VICTORIA'S SECRET ROYAL FANTASY BRA ($10 MILHÕES) — CRIADO POR MOUAWAD</span>
-                <span>✦ SEXY SPLENDOR FANTASY BRA ($12.5 MILHÕES) — COM DIAMANTE DE 101 QUILATES</span>
-                <span>✦ HEARTS ON FIRE FANTASY BRA ($6.5 MILHÕES) — 2.000 DIAMANTES LAPIDAÇÃO PERFEITA</span>
-            </div>
-        </div>
     </header>
 
-    <!-- SEÇÃO 1: VISUALIZADOR 3D DE JOIAS -->
-    <section id="joias-3d" class="relative z-10 py-32 px-6 lg:px-20 border-b border-champagne-500/15">
-        <div class="max-w-7xl mx-auto">
-            <div class="text-center max-w-3xl mx-auto mb-16 reveal-element">
-                <span class="font-cinzel text-xs tracking-[0.4em] text-champagne-400 uppercase font-semibold">MOTOR TRIDIMENSIONAL DE GEMAS</span>
-                <h2 class="font-serif text-4xl sm:text-6xl font-normal mt-2 mb-4">Inspeção em <span class="italic text-champagne-400">3D Real</span></h2>
-                <div class="w-24 h-[1px] bg-gradient-to-r from-transparent via-champagne-400 to-transparent mx-auto"></div>
-                <p class="font-sans font-light text-slate-400 dark:text-slate-400 light:text-slate-600 text-sm mt-4">
-                    Observe a peça e o brilho contínuo de cada joia em alta definição.
-                </p>
+    <main id="conteudo">
+        <section class="hero" id="inicio" aria-label="Destaques editoriais">
+            <div class="hero-slides" aria-live="off">
+                <article class="hero-slide is-active" data-slide="0" aria-hidden="false">
+                    <video class="hero-media" autoplay muted loop playsinline preload="metadata" poster="{{ url_for('static', path='assets/rings-hero-poster.jpg') }}">
+                        <source src="{{ url_for('static', path='assets/Fundo1.mp4') }}" type="video/mp4">
+                    </video>
+                    <div class="hero-shade"></div>
+                    <div class="hero-copy shell">
+                        <p class="eyebrow light">O extraordinário começa nos detalhes</p>
+                        <h1>Uma promessa.<br><em>Feita para durar.</em></h1>
+                        <p>Diamantes e ouro rosé encontram o desenho atemporal em criações que acompanham os seus momentos mais preciosos.</p>
+                        <a class="button button-light" href="#gemas">Explore o universo dos diamantes <span aria-hidden="true">↗</span></a>
+                    </div>
+                </article>
+                <article class="hero-slide" data-slide="1" aria-hidden="true">
+                    <video class="hero-media" muted loop playsinline preload="none" poster="{{ url_for('static', path='assets/rings-hero-poster.jpg') }}">
+                        <source src="{{ url_for('static', path='assets/fundo 3.mp4') }}" type="video/mp4">
+                    </video>
+                    <div class="hero-shade"></div>
+                    <div class="hero-copy shell">
+                        <p class="eyebrow light">Precisão em cada faceta</p>
+                        <h2>Uma luz.<br><em>Infinitas lapidações.</em></h2>
+                        <p>Redonda, oval ou esmeralda: descubra a linguagem de cada lapidação.</p>
+                        <a class="button button-light" href="#lapidacoes">Descobrir as lapidações <span aria-hidden="true">↗</span></a>
+                    </div>
+                </article>
+                <article class="hero-slide" data-slide="2" aria-hidden="true">
+                    <video class="hero-media" muted loop playsinline preload="none" poster="{{ url_for('static', path='assets/fantasy_braa.jpg') }}">
+                        <source src="{{ url_for('static', path='assets/fundo2.mp4') }}" type="video/mp4">
+                    </video>
+                    <div class="hero-shade"></div>
+                    <div class="hero-copy shell">
+                        <p class="eyebrow light">Uma criação só sua</p>
+                        <h2>O seu momento.<br><em>O seu desenho.</em></h2>
+                        <p>Encontre nossos especialistas para imaginar, desenhar e celebrar juntos.</p>
+                        <a class="button button-light" href="#atelier">Entre no ateliê privado <span aria-hidden="true">↗</span></a>
+                    </div>
+                </article>
             </div>
+            <div class="hero-controls shell" aria-label="Controles do carrossel">
+                <button class="carousel-arrow" type="button" data-carousel="previous" aria-label="Slide anterior">←</button>
+                <div class="carousel-dots" role="group" aria-label="Escolher destaque">
+                    <button class="carousel-dot is-active" type="button" data-slide-to="0" aria-label="Destaque 1" aria-pressed="true"></button>
+                    <button class="carousel-dot" type="button" data-slide-to="1" aria-label="Destaque 2" aria-pressed="false"></button>
+                    <button class="carousel-dot" type="button" data-slide-to="2" aria-label="Destaque 3" aria-pressed="false"></button>
+                </div>
+                <button class="carousel-arrow" type="button" data-carousel="next" aria-label="Próximo slide">→</button>
+                <button class="carousel-pause" type="button" aria-pressed="false">Pausar</button>
+            </div>
+        </section>
 
-            <!-- CONTAINER DO VISUALIZADOR 3D -->
-            <div class="flex flex-col items-center justify-center reveal-element">
-                <div class="orbit-container w-full max-w-xl my-6 flex items-center justify-center">
-                    <div class="orbit-ring"></div>
+        <section class="intro section-space shell" aria-labelledby="intro-title">
+            <p class="eyebrow">Aphrodite's Vault · edição 01</p>
+            <h2 id="intro-title">Mais do que adornos.<br><em>Pequenas obras de arte.</em></h2>
+            <p>Da primeira lapidação ao legado de uma maison, reunimos histórias que revelam o que torna uma joia inesquecível.</p>
+        </section>
 
-                    <div id="card3dWrapper" class="relative w-full max-w-md h-[32rem] rounded-[40px] overflow-hidden glass-dark dark:glass-dark light:glass-light border border-champagne-500/50 shadow-gold-glow-lg flex flex-col justify-between p-5 transition-all duration-500">
-                        <div class="relative w-full h-[22rem] rounded-[30px] overflow-hidden bg-obsidian/90 border border-champagne-500/20 flex items-center justify-center select-none" id="canvas3dContainer">
-                            
-                            <canvas id="jewel3dCanvas" class="w-full h-full block"></canvas>
+        <section class="gem-studio section-space" id="gemas" aria-labelledby="gem-studio-title">
+            <div class="shell gem-layout">
+                <div class="gem-copy">
+                    <p class="eyebrow">A essência de uma pedra preciosa</p>
+                    <h2 id="gem-studio-title">Uma forma.<br><em>Uma assinatura.</em></h2>
+                    <p>Escolha uma lapidação para conhecer suas proporções e silhueta. Mova o cursor sobre a joia para ampliar os detalhes da imagem disponível.</p>
+                    <div class="cut-selector" role="group" aria-label="Selecionar lapidação do diamante">
+                        <button type="button" class="cut-button is-selected" data-cut="round" aria-pressed="true">Brilhante</button>
+                        <button type="button" class="cut-button" data-cut="radiant" aria-pressed="false">Esmeralda</button>
+                        <button type="button" class="cut-button" data-cut="marquise" aria-pressed="false">Navete</button>
+                        <button type="button" class="cut-button" data-cut="oval" aria-pressed="false">Oval</button>
+                        <button type="button" class="cut-button" data-cut="princess" aria-pressed="false">Princess</button>
+                    </div>
+                    <div class="cut-description" aria-live="polite">
+                        <span class="eyebrow" id="cut-name">BRILHANTE REDONDO</span>
+                        <p id="cut-description">Lapidação clássica de 57 ou 58 facetas, pensada para refletir a luz com intensidade.</p>
+                    </div>
+                    <p class="fine-print">As formas facetadas são ilustrações educativas. A joia é exibida em fotografia; visualização 360° requer imagens adicionais da peça.</p>
+                </div>
+                <div class="gem-visual">
+                    <div class="gem-sample" id="gem-sample" role="slider" aria-label="Girar a ilustração facetada" aria-valuemin="0" aria-valuemax="360" aria-valuenow="0" aria-valuetext="0 graus">
+                        <svg id="cut-illustration" viewBox="0 0 240 240" role="img" aria-label="Ilustração facetada de lapidação brilhante redonda">
+                            <defs>
+                                <linearGradient id="gem-fill" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff" /><stop offset=".48" stop-color="#e8c3b9" /><stop offset="1" stop-color="#b89664" /></linearGradient>
+                            </defs>
+                            <polygon id="gem-outline" points="120,24 155,32 184,56 204,90 210,120 204,150 184,184 155,208 120,216 85,208 56,184 36,150 30,120 36,90 56,56 85,32" fill="url(#gem-fill)" stroke="#f5eee3" stroke-width="2" />
+                            <g id="gem-facets" fill="none" stroke="#fff" stroke-opacity=".88" stroke-width="1.4">
+                                <path d="M120 24 120 82 155 32 142 84 184 56 157 97 204 90 168 120 210 120 168 120 204 150 157 143 184 184 142 156 155 208 120 158 120 216 98 158 85 208 92 156 56 184 83 143 36 150 72 120 30 120 72 120 36 90 83 97 56 56 98 84 85 32 120 82 120 24Z" />
+                                <path d="M72 120h96M92 84l66 59M142 84l-50 72M83 97l74 46M157 97 83 143" />
+                            </g>
+                        </svg>
+                    </div>
+                    <div class="gem-product" id="gem-product">
+                        <img src="{{ url_for('static', path='assets/Demi-Fine Diamanté Wings Ring.avif') }}" alt="Anel Diamanté Wings com diamantes em detalhe" loading="lazy" decoding="async">
+                        <div class="lens" aria-hidden="true"></div>
+                        <span class="zoom-label">Mova o cursor para ampliar</span>
+                    </div>
+                    <p class="visual-caption"><span>FORMA EM DESTAQUE</span><span>01 / 05</span></p>
+                </div>
+            </div>
+        </section>
 
-                            <!-- BADGE DA MAISON -->
-                            <div class="absolute top-4 left-4 bg-obsidian/80 backdrop-blur-md px-4 py-1.5 rounded-full border border-champagne-500/40 z-20">
-                                <span id="3dJewelMaison" class="font-cinzel text-[10px] tracking-[0.25em] text-champagne-300 font-semibold uppercase">MOUAWAD</span>
+        <section class="collection section-space" id="colecao" aria-labelledby="collection-title">
+            <div class="shell">
+                <div class="section-heading">
+                    <div>
+                        <p class="eyebrow">Seleção da curadoria</p>
+                        <h2 id="collection-title">Peças em <em>destaque</em></h2>
+                    </div>
+                    <p class="section-note">Inspiração para descobrir novas formas, materiais e histórias.</p>
+                </div>
+                <div class="filter-row" role="group" aria-label="Filtrar peças por categoria">
+                    <button class="filter-button is-selected" type="button" data-filter="todos" aria-pressed="true">Tudo</button>
+                    <button class="filter-button" type="button" data-filter="aneis" aria-pressed="false">Anéis</button>
+                    <button class="filter-button" type="button" data-filter="colares" aria-pressed="false">Colares</button>
+                    <button class="filter-button" type="button" data-filter="gemas" aria-pressed="false">Gemas</button>
+                </div>
+                <p class="results-count" id="results-count" aria-live="polite"></p>
+                <div class="product-grid" id="product-grid" data-ring-image="{{ url_for('static', path='assets/Demi-Fine Diamanté Wings Ring.avif') }}" data-bra-image="{{ url_for('static', path='assets/fantasy_braa.jpg') }}" data-rings-poster="{{ url_for('static', path='assets/rings-hero-poster.jpg') }}" data-rings-video="{{ url_for('static', path='assets/Fundo1.mp4') }}"></div>
+                <p class="empty-state" id="empty-state" hidden>Nenhuma história encontrada. Experimente outra busca ou categoria.</p>
+            </div>
+        </section>
+
+        <section class="four-cs section-space" id="lapidacoes" aria-labelledby="four-cs-title">
+            <div class="shell">
+                <div class="section-heading">
+                    <div>
+                        <p class="eyebrow">Um olhar mais atento</p>
+                        <h2 id="four-cs-title">Os quatro Cs <em>do diamante.</em></h2>
+                    </div>
+                    <p class="section-note">Um guia visual para entender os principais critérios usados na descrição de diamantes.</p>
+                </div>
+                <div class="cs-explorer">
+                    <div class="cs-tabs" role="tablist" aria-label="Explore os quatro Cs">
+                        <button class="cs-tab is-selected" id="tab-cut" type="button" role="tab" aria-selected="true" aria-controls="panel-cut" data-cs="cut">01 <span>Cut · Corte</span></button>
+                        <button class="cs-tab" id="tab-color" type="button" role="tab" aria-selected="false" aria-controls="panel-color" data-cs="color">02 <span>Color · Cor</span></button>
+                        <button class="cs-tab" id="tab-clarity" type="button" role="tab" aria-selected="false" aria-controls="panel-clarity" data-cs="clarity">03 <span>Clarity · Pureza</span></button>
+                        <button class="cs-tab" id="tab-carat" type="button" role="tab" aria-selected="false" aria-controls="panel-carat" data-cs="carat">04 <span>Carat · Quilate</span></button>
+                    </div>
+                    <div class="cs-content">
+                        <div class="cs-copy">
+                            <div id="panel-cut" class="cs-panel" role="tabpanel" aria-labelledby="tab-cut">
+                                <p class="eyebrow">A luz começa no desenho</p><h3>Cut <em>· Corte</em></h3>
+                                <p>Proporções, simetria e acabamento influenciam como a luz retorna ao olhar. Um corte bem executado pode realçar o brilho da pedra.</p>
                             </div>
+                            <div id="panel-color" class="cs-panel" role="tabpanel" aria-labelledby="tab-color" hidden>
+                                <p class="eyebrow">Nuances quase invisíveis</p><h3>Color <em>· Cor</em></h3>
+                                <p>Na escala tradicional para diamantes brancos, a cor descreve o grau de ausência de tonalidade. Em outras gemas, a cor pode ser protagonista.</p>
+                            </div>
+                            <div id="panel-clarity" class="cs-panel" role="tabpanel" aria-labelledby="tab-clarity" hidden>
+                                <p class="eyebrow">Uma história dentro da pedra</p><h3>Clarity <em>· Pureza</em></h3>
+                                <p>Inclusões e características naturais ajudam a descrever a pureza. A avaliação considera tipo, posição e visibilidade, geralmente com ampliação.</p>
+                            </div>
+                            <div id="panel-carat" class="cs-panel" role="tabpanel" aria-labelledby="tab-carat" hidden>
+                                <p class="eyebrow">Peso não é medida de beleza</p><h3>Carat <em>· Quilate</em></h3>
+                                <p>O quilate mede o peso da gema; não indica, sozinho, tamanho aparente, qualidade ou valor. Proporções e lapidação também fazem diferença.</p>
+                            </div>
+                            <label class="comparison-label" for="comparison-range">Explore o comparador ilustrativo <output id="comparison-value" for="comparison-range">50%</output></label>
+                            <input id="comparison-range" type="range" min="0" max="100" value="50" aria-label="Intensidade da comparação visual">
+                            <p class="fine-print">Comparação conceitual: a classificação depende de avaliação gemológica profissional.</p>
                         </div>
-
-                        <!-- BADGE INFORMATIVA -->
-                        <div class="w-full py-3.5 px-6 rounded-[24px] border border-champagne-500/60 bg-obsidian/80 dark:bg-obsidian/80 light:bg-white/80 backdrop-blur-2xl flex items-center justify-center gap-3 shadow-inner-gold">
-                            <i class="fa-solid fa-gem text-champagne-400 text-sm"></i>
-                            <span class="font-cinzel text-[10px] tracking-[0.25em] text-champagne-200 dark:text-champagne-200 light:text-champagne-900 font-bold uppercase">
-                                INTERACTIVE 3D JEWEL VIEW
-                            </span>
+                        <div class="cs-comparison" id="cs-comparison" data-cs="cut" aria-hidden="true">
+                            <span class="comparison-side comparison-before">REFERÊNCIA</span>
+                            <div class="comparison-gem"><div class="diamond-illustration"></div></div>
+                            <span class="comparison-side comparison-after">COMPARAÇÃO</span>
+                            <span class="comparison-axis" id="comparison-axis"></span>
                         </div>
                     </div>
-
-                    <!-- BOTÕES DE NAVEGAÇÃO -->
-                    <button onclick="prev3DJewel()" class="absolute left-[-2rem] sm:left-[-4rem] top-1/2 -translate-y-1/2 w-12 h-12 rounded-full border border-champagne-500/50 bg-obsidian/80 backdrop-blur-xl flex items-center justify-center text-champagne-400 hover:scale-110 hover:border-champagne-300 transition-all z-20 shadow-gold-glow">
-                        <i class="fa-solid fa-chevron-left text-sm"></i>
-                    </button>
-
-                    <button onclick="next3DJewel()" class="absolute right-[-2rem] sm:right-[-4rem] top-1/2 -translate-y-1/2 w-12 h-12 rounded-full border border-champagne-500/50 bg-obsidian/80 backdrop-blur-xl flex items-center justify-center text-champagne-400 hover:scale-110 hover:border-champagne-300 transition-all z-20 shadow-gold-glow">
-                        <i class="fa-solid fa-chevron-right text-sm"></i>
-                    </button>
-                </div>
-
-                <!-- DETALHES TÉCNICOS DA JOIA -->
-                <div class="text-center mt-6 max-w-lg">
-                    <h3 id="3dJewelTitle" class="font-serif text-3xl font-normal gold-shimmer-text">Colar Mouawad L'Incomparable</h3>
-                    <p id="3dJewelDesc" class="font-sans text-xs text-slate-400 dark:text-slate-400 light:text-slate-600 mt-2 leading-relaxed">
-                        Avaliado em $55 Milhões de Dólares. Contém o maior diamante amarelo do mundo sem falhas internas.
-                    </p>
-                    <a id="3dOfficialLink" href="https://www.mouawad.com" target="_blank" class="inline-flex items-center gap-2 mt-5 px-7 py-2.5 rounded-full border border-champagne-500/40 font-cinzel text-[10px] tracking-[0.2em] text-champagne-400 hover:bg-champagne-500 hover:text-obsidian transition-all shadow-md">
-                        <span>VISITAR SITE OFICIAL MOUAWAD</span>
-                        <i class="fa-solid fa-arrow-up-right-from-square text-[9px]"></i>
-                    </a>
                 </div>
             </div>
+        </section>
+
+        <section class="maisons section-space" id="maisons" aria-labelledby="maisons-title">
+            <div class="shell maison-layout">
+                <div class="maison-intro">
+                    <p class="eyebrow">Uma herança de excelência</p>
+                    <h2 id="maisons-title">Casas com<br><em>história própria.</em></h2>
+                    <p>Descubra diferentes tradições de criação, do savoir-faire parisiense à exuberância romana.</p>
+                    <a class="text-link" href="#revista">Explore a revista <span aria-hidden="true">↗</span></a>
+                </div>
+                <div class="maison-list">
+                    <a href="https://www.cartier.com/" target="_blank" rel="noopener noreferrer"><span>01</span> Cartier <small>Paris · 1847</small><b aria-hidden="true">↗</b></a>
+                    <a href="https://www.vancleefarpels.com/" target="_blank" rel="noopener noreferrer"><span>02</span> Van Cleef &amp; Arpels <small>Paris · 1906</small><b aria-hidden="true">↗</b></a>
+                    <a href="https://www.bulgari.com/" target="_blank" rel="noopener noreferrer"><span>03</span> Bvlgari <small>Roma · 1884</small><b aria-hidden="true">↗</b></a>
+                    <a href="https://www.tiffany.com/" target="_blank" rel="noopener noreferrer"><span>04</span> Tiffany &amp; Co. <small>Nova York · 1837</small><b aria-hidden="true">↗</b></a>
+                    <a href="https://www.harrywinston.com/" target="_blank" rel="noopener noreferrer"><span>05</span> Harry Winston <small>Nova York · 1932</small><b aria-hidden="true">↗</b></a>
+                </div>
+            </div>
+        </section>
+
+        <section class="atelier section-space" id="atelier" aria-labelledby="atelier-title">
+            <div class="shell atelier-layout">
+                <div class="atelier-copy">
+                    <p class="eyebrow">Um encontro no nosso ateliê</p>
+                    <h2 id="atelier-title">Uma ideia.<br><em>Uma joia só sua.</em></h2>
+                    <p>Conte-nos o que imagina. Nossa equipe poderá conversar com você sobre referências, gemas e possibilidades de criação sob medida.</p>
+                    <span class="atelier-note">CONSULTORIA PRIVADA · COM HORA MARCADA</span>
+                </div>
+                <form class="appointment-form" id="appointment-form">
+                    <div class="form-heading"><span class="eyebrow">Atendimento pessoal</span><h3>Solicite uma conversa</h3></div>
+                    <label for="appointment-name">Seu nome</label>
+                    <input id="appointment-name" name="name" autocomplete="name" required maxlength="100" placeholder="Como podemos chamar você?">
+                    <div class="form-row">
+                        <div><label for="appointment-email">E-mail</label><input id="appointment-email" name="email" type="email" autocomplete="email" required maxlength="254" placeholder="voce@exemplo.com"></div>
+                        <div><label for="appointment-date">Data de preferência</label><input id="appointment-date" name="date" type="date" required></div>
+                    </div>
+                    <label for="appointment-interest">O que deseja criar?</label>
+                    <select id="appointment-interest" name="interest" required>
+                        <option value="" selected disabled>Selecione um universo</option>
+                        <option>Anel de noivado</option><option>Joia sob medida</option><option>Conhecer uma gema</option><option>Consultoria de coleção</option>
+                    </select>
+                    <label for="appointment-notes">Conte um pouco sobre sua ideia <span>(opcional)</span></label>
+                    <textarea id="appointment-notes" name="notes" rows="3" maxlength="500" placeholder="Referências, ocasião ou detalhes que gostaria de compartilhar"></textarea>
+                    <button class="button button-gold" type="submit">Solicitar atendimento privado <span aria-hidden="true">↗</span></button>
+                    <p class="form-status" id="appointment-status" aria-live="polite"></p>
+                    <p class="form-privacy">Demonstração local: os dados não são enviados nem armazenados.</p>
+                </form>
+            </div>
+        </section>
+
+        <section class="guides section-space shell" id="guias" aria-labelledby="guides-title">
+            <div class="section-heading">
+                <div>
+                    <p class="eyebrow">Conhecer para escolher</p>
+                    <h2 id="guides-title">O essencial, <em>bem explicado.</em></h2>
+                </div>
+                <p class="section-note">Informação clara para apreciar cada detalhe com confiança.</p>
+            </div>
+            <div class="guide-grid">
+                <article class="guide-card" id="guide-4cs">
+                    <span class="guide-number">01 / GEMOLOGIA</span>
+                    <h3>Os 4Cs do diamante</h3>
+                    <p>Entenda como lapidação, cor, pureza e quilate ajudam a descrever as características de um diamante.</p>
+                    <details class="guide-details">
+                        <summary>Entenda cada característica</summary>
+                        <ul>
+                            <li><strong>Lapidação (Cut):</strong> proporções e acabamento influenciam o brilho.</li>
+                            <li><strong>Cor (Color):</strong> descreve a ausência de cor em diamantes brancos.</li>
+                            <li><strong>Pureza (Clarity):</strong> considera inclusões e características internas.</li>
+                            <li><strong>Quilate (Carat):</strong> informa o peso, não a qualidade isolada da pedra.</li>
+                        </ul>
+                    </details>
+                    <a href="#artigo-4cs" class="text-link">Conheça os 4Cs <span aria-hidden="true">↗</span></a>
+                </article>
+                <article class="guide-card" id="guide-metais">
+                    <span class="guide-number">02 / CUIDADOS</span>
+                    <h3>O cuidado com metais nobres</h3>
+                    <p>Hábitos delicados de limpeza e conservação ajudam a preservar o brilho de ouro e platina.</p>
+                    <details class="guide-details">
+                        <summary>Veja cuidados essenciais</summary>
+                        <ul>
+                            <li>Guarde cada peça separadamente para evitar riscos.</li>
+                            <li>Retire joias antes de usar produtos químicos ou praticar exercícios.</li>
+                            <li>Procure um joalheiro para limpeza profissional e revisão de cravações.</li>
+                        </ul>
+                    </details>
+                    <a href="#artigo-metais" class="text-link">Aprenda a cuidar <span aria-hidden="true">↗</span></a>
+                </article>
+                <article class="guide-card" id="guide-aro">
+                    <span class="guide-number">03 / MEDIDAS</span>
+                    <h3>Como descobrir seu aro</h3>
+                    <p>Um guia simples para entender medidas de anéis e saber quando procurar um ajuste profissional.</p>
+                    <details class="guide-details">
+                        <summary>Encontre um bom ajuste</summary>
+                        <ul>
+                            <li>Meça o dedo em temperatura amena; o tamanho pode variar durante o dia.</li>
+                            <li>O anel deve passar pela articulação sem desconforto e permanecer firme.</li>
+                            <li>Para uma medida confiável, consulte uma joalheria com aro medidor.</li>
+                        </ul>
+                    </details>
+                    <a href="#artigo-aro" class="text-link">Encontre seu tamanho <span aria-hidden="true">↗</span></a>
+                </article>
+            </div>
+        </section>
+
+        <section class="journal section-space" id="revista" aria-labelledby="journal-title">
+            <div class="shell">
+                <div class="section-heading">
+                    <div>
+                        <p class="eyebrow">Caderno de joalheria</p>
+                        <h2 id="journal-title">Histórias para <em>guardar.</em></h2>
+                    </div>
+                    <span class="journal-index">01 — 03</span>
+                </div>
+                <div class="journal-grid">
+                    <article class="journal-card" id="artigo-4cs">
+                        <span class="eyebrow">Gemas · 6 min de leitura</span>
+                        <h3>Os 4Cs: um vocabulário para apreciar diamantes</h3>
+                        <p>Um ponto de partida para compreender as características que tornam cada pedra singular.</p>
+                        <a href="#guide-4cs" class="text-link" aria-label="Leia o guia sobre os 4Cs">Descobrir <span aria-hidden="true">↗</span></a>
+                    </article>
+                    <article class="journal-card" id="artigo-metais">
+                        <span class="eyebrow">Cuidados · 4 min de leitura</span>
+                        <h3>O brilho que permanece: cuidar de ouro e platina</h3>
+                        <p>Pequenos gestos de conservação para respeitar materiais preciosos e seu acabamento.</p>
+                        <a href="#guide-metais" class="text-link" aria-label="Leia o guia de cuidados com metais">Descobrir <span aria-hidden="true">↗</span></a>
+                    </article>
+                    <article class="journal-card" id="artigo-aro">
+                        <span class="eyebrow">Guia de estilo · 3 min de leitura</span>
+                        <h3>O ajuste perfeito: encontrando o aro ideal</h3>
+                        <p>Conforto, proporção e o que considerar antes de ajustar um anel especial.</p>
+                        <a href="#guide-aro" class="text-link" aria-label="Leia o guia de tamanhos de anel">Descobrir <span aria-hidden="true">↗</span></a>
+                    </article>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="shell footer-main">
+            <a class="wordmark footer-brand" href="#inicio">
+                <span class="wordmark-symbol" aria-hidden="true">A</span>
+                <span class="wordmark-name">APHRODITE'S <span>VAULT</span></span>
+            </a>
+            <p>Um olhar independente sobre a arte da joalheria.</p>
+            <a class="text-link" href="#inicio">Voltar ao início ↑</a>
         </div>
-    </section>
-
-    <!-- SEÇÃO 3: CASAS LENDÁRIAS -->
-    <section id="maisons" class="relative z-10 py-32 px-6 lg:px-20 border-t border-champagne-500/15">
-        <div class="max-w-7xl mx-auto">
-            <div class="text-center max-w-3xl mx-auto mb-20 reveal-element">
-                <span class="font-cinzel text-xs tracking-[0.4em] text-champagne-400 uppercase font-semibold">DINASTIAS GEMOLÓGICAS</span>
-                <h2 class="font-serif text-4xl sm:text-6xl font-normal mt-2 mb-4">Mestres da <span class="italic text-champagne-400">Place Vendôme</span></h2>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8" id="maisonsContainer">
-                <!-- Injetado via Javascript -->
-            </div>
-        </div>
-    </section>
-
-    <!-- SEÇÃO 4: NOTÍCIAS & LEILÕES -->
-    <section id="noticias" class="relative z-10 py-32 px-6 lg:px-20 border-t border-champagne-500/15">
-        <div class="max-w-7xl mx-auto">
-            <div class="text-center max-w-3xl mx-auto mb-16 reveal-element">
-                <span class="font-cinzel text-xs tracking-[0.4em] text-champagne-400 uppercase font-semibold">COBERTURA INTERNACIONAL</span>
-                <h2 class="font-serif text-4xl sm:text-6xl font-normal mt-2">Leilões & <span class="italic text-champagne-400">Notícias Globais</span></h2>
-            </div>
-
-            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8" id="newsContainer">
-                <!-- Injetado via Javascript -->
-            </div>
-        </div>
-    </section>
-
-    <!-- RODAPÉ -->
-    <footer class="relative z-10 border-t border-champagne-500/20 py-20 px-6 lg:px-20 bg-obsidian/95 dark:bg-obsidian/95 light:bg-ivory text-center">
-        <div class="max-w-7xl mx-auto flex flex-col items-center">
-            <div class="w-14 h-14 rounded-full border border-champagne-500/40 flex items-center justify-center mb-6 shadow-gold-glow">
-                <i class="fa-solid fa-gem text-champagne-400 text-xl"></i>
-            </div>
-            <h3 class="font-cinzel text-3xl font-black tracking-[0.35em] gold-shimmer-text mb-2">APHRODITE'S VAULT</h3>
-            <p class="font-sans font-light text-xs text-slate-500 tracking-widest uppercase">
-                © 2026 APHRODITE'S VAULT. TODOS OS DIREITOS RESERVADOS.
-            </p>
+        <div class="shell footer-bottom">
+            <span>© 2026 Aphrodite's Vault. Todos os direitos reservados.</span>
+            <span>Conteúdo editorial · Brasil</span>
         </div>
     </footer>
 
-    <!-- MODAL DE BOLETIM -->
-    <div id="vaultModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-obsidian/85 backdrop-blur-2xl opacity-0 pointer-events-none transition-all duration-500">
-        <div id="vaultCard" class="relative w-full max-w-lg glass-dark dark:glass-dark light:glass-light rounded-[36px] p-8 sm:p-12 border border-champagne-500/40 shadow-gold-glow-lg modal-vault-enter">
-            <button onclick="closeVaultModal()" class="absolute top-6 right-6 w-10 h-10 rounded-full border border-champagne-500/30 flex items-center justify-center text-slate-400 hover:text-champagne-400 transition-colors">
-                <i class="fa-solid fa-xmark text-base"></i>
-            </button>
-
-            <div class="text-center mb-8">
-                <div class="w-14 h-14 rounded-full border border-champagne-500/40 flex items-center justify-center mx-auto mb-4 bg-obsidian/60 shadow-inner-gold">
-                    <i class="fa-regular fa-paper-plane text-champagne-400 text-lg"></i>
-                </div>
-                <h3 class="font-serif text-3xl font-normal mb-2">Boletim Informativo de Joias</h3>
-            </div>
-
-            <form onsubmit="handleVaultSubmit(event)" class="space-y-5">
-                <div>
-                    <label class="block font-cinzel text-[10px] tracking-[0.2em] text-champagne-400 uppercase mb-2 font-semibold">Seu E-mail Principal</label>
-                    <input type="email" required placeholder="seuemail@exemplo.com" class="w-full px-6 py-4 rounded-full bg-obsidian/70 dark:bg-obsidian/70 light:bg-white/80 border border-champagne-500/30 text-xs focus:outline-none focus:border-champagne-400 text-slate-200 dark:text-slate-200 light:text-slate-900 transition-colors">
-                </div>
-
-                <button type="submit" class="w-full py-4 rounded-full gold-shimmer-bg text-obsidian font-cinzel font-bold text-xs tracking-[0.25em] shadow-gold-glow hover:scale-[1.02] transition-all">
-                    RECEBER NOTÍCIAS GRATUITAMENTE
-                </button>
-            </form>
+    <dialog class="jewel-dialog" id="jewel-dialog" aria-labelledby="dialog-title">
+        <button class="dialog-close icon-button" type="button" aria-label="Fechar visualização rápida">×</button>
+        <div class="zoom-stage" id="zoom-stage">
+            <img id="zoom-image" src="" alt="">
+            <span class="image-unavailable" id="zoom-image-error" hidden>Prévia visual indisponível</span>
+            <span class="zoom-hint">Mova o cursor para explorar os detalhes · Pinça para ampliar</span>
         </div>
-    </div>
-
-    <!-- Script Principal -->
-    <script src="../static/js/script.js"></script>
+        <div class="dialog-caption">
+            <div><p class="eyebrow" id="dialog-category"></p><h2 id="dialog-title"></h2></div>
+            <p id="dialog-description"></p>
+        </div>
+    </dialog>
 </body>
 </html>
